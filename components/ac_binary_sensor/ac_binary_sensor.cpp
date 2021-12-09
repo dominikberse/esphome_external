@@ -49,11 +49,10 @@ void AcBinarySensor::setup() {
 }
 
 void AcBinarySensor::dump_config() {
-  LOG_SENSOR("", "A/C Binary Sensor", this);
+  LOG_BINARY_SENSOR("", "A/C Binary Sensor", this);
   LOG_PIN("  Pin: ", this->pin_);
   ESP_LOGCONFIG(TAG, "  A/C Frequency: %u Hz", this->storage_.freq);
   ESP_LOGCONFIG(TAG, "  Switching after %u pulses", this->threshold_);
-  LOG_UPDATE_INTERVAL(this);
 }
 
 void AcBinarySensor::loop() {
