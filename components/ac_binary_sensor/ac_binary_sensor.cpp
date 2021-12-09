@@ -58,7 +58,7 @@ void AcBinarySensor::dump_config() {
 
 void AcBinarySensor::loop() {
   // ensure loop runs at (approximately) current frequency
-  unit32_t now = millis();
+  uint32_t now = millis();
   if (now - this->last_check_ < 1000 / this->storage_.freq) {
     return;
   }
