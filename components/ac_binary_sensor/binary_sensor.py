@@ -22,13 +22,11 @@ async def to_code(config):
     await cg.register_component(var, config)
     await binary_sensor.register_binary_sensor(var, config)
 
-    pin_a = await cg.gpio_pin_expression(config[CONF_PIN])
-    cg.add(var.set_pin(pin_a))
+    pin = await cg.gpio_pin_expression(config[CONF_PIN])
+    cg.add(var.set_pin(pin))
 
     if CONF_FREQUENCY in config:
-        freq = await cg.get_variable(config[CONF_FREQUENCY])
-        cg.add(var.set_freq(freq))
+        cg.add(var.set_freq(config[CONF_FREQUENCY]))
 
     if CONF_THRESHOLD in config:
-        freq = await cg.get_variable(config[CONF_THRESHOLD])
-        cg.add(var.set_threshold(freq))
+        cg.add(var.set_threshold(config[CONF_THRESHOLD]))
