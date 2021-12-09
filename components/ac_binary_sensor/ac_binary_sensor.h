@@ -4,19 +4,22 @@
 #include "esphome/core/hal.h"
 #include "esphome/components/binary_sensor/binary_sensor.h"
 
+#ifndef USE_ESP8266
+#warning "A/C pulse sensor is tested on ESP8266 only"
+#endif
+
 namespace esphome {
 namespace ac_binary_sensor {
 
 struct AcBinarySensorStorage {
-  void setup(InternalGPIOPin *pin);
-  bool check_state(bool *state);
+  bool setup(InternalGPIOPin *pin);
   static void IRAM_ATTR HOT s_gpio_intr(AcBinarySensorStorage *store);
 
   volatile uint32_t last_pulse{0};
   volatile uint8_t count{0};
   uint8_t freq{0};
 
-  GPIOInternalPin *_pin;
+  GPIOInternalPin *pin;
   ISRInternalGPIOPin isr_pin;
 };
 
