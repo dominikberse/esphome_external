@@ -1,5 +1,8 @@
 #include "ac_binary_sensor.h"
 
+namespace esphome {
+namespace ac_binary_sensor {
+
 struct AcBinarySensorStore {
   void setup(InternalGPIOPin *pin) {
     pin->setup();
@@ -73,3 +76,6 @@ void AcBinarySensorStore::loop() {
   trace_ = count;
   last_check_ = now;
 }
+
+}  // namespace ac_binary_sensor
+}  // namespace esphome
