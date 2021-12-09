@@ -2,7 +2,7 @@ import esphome.codegen as cg
 import esphome.config_validation as cv
 from esphome import pins
 from esphome.components import binary_sensor
-from esphome.const import CONF_ID, CONF_PIN, CONF_FREQUENCY,  CONF_THRESHOLD
+from esphome.const import CONF_ID, CONF_PIN, CONF_FREQUENCY, CONF_THRESHOLD
 
 ACBinarySensor = cg.global_ns.class_(
     'ACBinarySensor', binary_sensor.BinarySensor, cg.Component)
@@ -10,8 +10,8 @@ ACBinarySensor = cg.global_ns.class_(
 CONFIG_SCHEMA = binary_sensor.BINARY_SENSOR_SCHEMA.extend(
     {
         cv.GenerateID(): cv.declare_id(ACBinarySensor),
-        cv.Required(CONF_PIN_A): pins.gpio_input_pin_schema,
-        cv.Required(CONF_PIN_B): pins.gpio_input_pin_schema,
+        cv.Required(CONF_PIN): pins.gpio_input_pin_schema,
+        cv.Optional(CONF_THRESHOLD): cv.uint8_t,
         cv.Optional(CONF_FREQUENCY): cv.uint8_t,
     }
 ).extend(cv.COMPONENT_SCHEMA)
