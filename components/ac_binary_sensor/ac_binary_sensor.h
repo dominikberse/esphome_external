@@ -26,11 +26,12 @@ struct AcBinarySensorStorage {
 class AcBinarySensor : public Component, public binary_sensor::BinarySensor {
  public:
   void set_pin(InternalGPIOPin *pin) { pin_ = pin; }
-  void set_threshold(uint8_t freq) { threshold_ = threshold; }
+  void set_threshold(uint8_t threshold) { threshold_ = threshold; }
   void set_freq(uint8_t freq) { storage_.freq = freq; }
 
   void setup() override;
   void loop() override;
+  void dump_config() override;
 
  private:
   InternalGPIOPin *pin_;
