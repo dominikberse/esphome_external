@@ -63,7 +63,7 @@ void AcBinarySensor::loop() {
     return;
   }
 
-  uint8_t count = this->storage._count;
+  uint8_t count = this->storage_.count;
   if (this->trace_ == count) {
     // no pulse detected
     if (this->level_ > 0) {
