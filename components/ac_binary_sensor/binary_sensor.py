@@ -4,8 +4,9 @@ from esphome import pins
 from esphome.components import binary_sensor
 from esphome.const import CONF_ID, CONF_PIN, CONF_FREQUENCY, CONF_THRESHOLD
 
-ACBinarySensor = cg.global_ns.class_(
-    'ACBinarySensor', binary_sensor.BinarySensor, cg.Component)
+ac_binary_sensor_ns = cg.esphome_ns.namespace("ac_binary_sensor")
+ACBinarySensor = ac_binary_sensor_ns.class_(
+    'AcBinarySensor', binary_sensor.BinarySensor, cg.Component)
 
 CONFIG_SCHEMA = binary_sensor.BINARY_SENSOR_SCHEMA.extend(
     {
