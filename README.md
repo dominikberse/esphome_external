@@ -17,22 +17,28 @@ Repository contains additional components for ESPHome.
 
   binary_sensor:
     - platform: ac_binary_sensor
+      # A/C frequency is at 50Hz
+      frequency: 50
+      # 2 pulses to trigger (increase if working unreliable)
+      threshold: 2 
       pin:
         number: GPIO12
         inverted: true
       id: switch_1
       internal: true
-      threshold: 2
       on_press:
         then:
           - light.toggle: light_1
     - platform: ac_binary_sensor
+      # A/C frequency is at 50Hz
+      frequency: 50
+      # 2 pulses to trigger (increase if working unreliable)
+      threshold: 2 
       pin:
         number: GPIO13
         inverted: true
       id: switch_2
       internal: true
-      threshold: 2
       on_press:
         then:
           - light.toggle: light_2
