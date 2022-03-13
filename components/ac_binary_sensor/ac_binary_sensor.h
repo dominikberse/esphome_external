@@ -17,7 +17,7 @@ struct AcBinarySensorStorage {
 
   volatile uint32_t last_pulse{0};
   volatile uint8_t count{0};
-  uint8_t freq{30};
+  uint8_t freq{50};
 
   InternalGPIOPin *pin;
   ISRInternalGPIOPin isr_pin;
